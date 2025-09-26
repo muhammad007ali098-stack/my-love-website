@@ -91,12 +91,14 @@ h1, h2, p {
 
 /* ---------- Final Page Styles ---------- */
 #final h1 {
-  font-size: 1.4rem;
+  font-size: 1rem;        /* Smaller text size for the heartfelt message */
   line-height: 1.8;
   max-width: 800px;
   margin: 20px auto;
   color: #d6336c;
   animation: fadeIn 2.5s ease-in-out;
+  font-weight: normal;
+  padding: 0 15px;
 }
 
 #final .subtitle {
