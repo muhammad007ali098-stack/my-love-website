@@ -1,16 +1,24 @@
+/* ---------- General Styles ---------- */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  background: linear-gradient(to bottom right, #ffe6f0, #ffccdd);
-  color: #ff4d6d;
-  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #ffe6eb, #fff0f5);
+  color: #d6336c;
   text-align: center;
+  overflow-x: hidden;
 }
 
+h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Pages ---------- */
 .page {
   display: none;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -21,78 +29,122 @@ body {
 }
 
 .title {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  animation: fadeIn 2s ease;
+  font-size: 2.5rem;
+  font-weight: bold;
+  animation: fadeIn 2s ease-in-out;
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  animation: fadeIn 3s ease;
+  margin-top: 15px;
+  font-size: 1.3rem;
+  color: #ff5c8d;
+  animation: fadeIn 3s ease-in-out;
 }
 
 .btn {
-  padding: 12px 25px;
-  background: #ff4d6d;
-  color: white;
-  font-size: 1.2rem;
+  background-color: #ff5c8d;
   border: none;
-  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  color: white;
+  border-radius: 25px;
+  margin-top: 20px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .btn:hover {
-  background: #ff1a4d;
+  transform: scale(1.05);
+  background-color: #ff4778;
+}
+
+/* ---------- Memory Game ---------- */
+.memory-game {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  grid-gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 2px solid #ff99b9;
+  border-radius: 12px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.instructions {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #ff5c8d;
+}
+
+/* ---------- Final Page Styles ---------- */
+#final h1 {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 20px auto;
+  color: #d6336c;
+  animation: fadeIn 2.5s ease-in-out;
+}
+
+#final .subtitle {
+  font-size: 1.5rem;
+  color: #ff3366;
+  margin-top: 20px;
+  font-weight: bold;
+  animation: glow 3s infinite alternate;
+}
+
+/* Floating hearts animation */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .floating-hearts::before,
 .floating-hearts::after {
-  content: '❤️';
+  content: "❤️ 💖 💕 💗";
   position: absolute;
   font-size: 2rem;
-  animation: float 5s infinite ease-in-out;
+  animation: float 10s infinite linear;
+  opacity: 0.6;
+}
+
+.floating-hearts::after {
+  animation-duration: 12s;
+  font-size: 2.5rem;
 }
 
 @keyframes float {
-  0% { transform: translateY(100vh) scale(1); opacity: 1; }
-  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
 }
 
-.memory-game {
-  width: 320px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.memory-card {
-  width: 70px;
-  height: 70px;
-  background: white;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  transform: scale(1);
-  transition: transform 0.3s ease;
-}
-
-.memory-card.flip {
-  background: #ffb6c1;
-  transform: rotateY(180deg);
-}
-
-.instructions {
-  margin-top: 20px;
-  font-size: 1.2rem;
-}
-
+/* ---------- Animations ---------- */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #ff99b9, 0 0 10px #ff99b9; }
+  100% { text-shadow: 0 0 20px #ff6699, 0 0 40px #ff6699; }
 }
